@@ -1,0 +1,21 @@
+body {
+	background-image: url("bookcase.jpg");
+	background-size:cover;
+}
+
+.box-class {
+	height:100%;
+	width:20%;
+	background-color:grey;
+	opacity:5;
+}
+
+h1 {
+	color:green;
+	margin-left:5%;
+}
+
+p {
+	color:yellow;
+	margin-left:5%;
+}
