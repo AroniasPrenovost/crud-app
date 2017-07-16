@@ -4,9 +4,23 @@ html
     link(rel='stylesheet', href='/css/styles.css')
   body
     div(class='box-class')
-      h1= message
-      p= body
-      p= body
-      p= body
-      p 
-        | this is another style of syntax
+      div(class='txt-class')
+        h1= message
+        p= body
+
+        block content
+          h4= postTitle
+            form(action="/book", method="POST")
+              div.input
+                span.label Title
+                input(type="text", name="title")
+              div.input
+                span.label Author
+                input(type="text", name="author")
+              div.actions
+                input(type="submit", value="Donate")
+        block content
+          h4= readTitle
+            form(action="/books", method="GET")
+              div.actions
+                input(type="submit", value="View Donation Basket")

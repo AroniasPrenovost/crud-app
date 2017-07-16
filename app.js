@@ -7,7 +7,7 @@ var Book = require('./Book.model');
 var port = 8080;
 var db = 'mongodb://localhost/example';
 
-// set up templating engine 
+// set up templating engine - Pug
 app.set('view engine', 'pug');
 path = require('path');
 
@@ -31,13 +31,30 @@ app.get('/', function(req, res) {
 });
 */
 // first route renders jade template
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
+  res.render('index', {
+    message: 'Used Book Donation',
+    postTitle: 'Add or POST your book to our collection.', 
+    readTitle: 'READ the collection\'s contents.',
+    readById: 'READ title by Id.',
+    deleteTitle: 'DELETE book by id.',  
+    body: 'Thank you for your generous donation. Help us keep organized by filling out the form below.',
+    inp1: 'title',
+    inp2: 'author',
+    inp3: 'category',
+  });
+});
+
+/* written with ES6 in mind */
+/*
+app.get('/', (req, res) => {
   res.render('index', { 
     title: 'Hello!', 
     message: 'Welcome to the cliche book store!',
     body: 'Please, take a look around and spend some time combing through our vast collection.'
   });
 });
+*/
 
 app.get('/books', function(req, res) {
   console.log('getting all books');
@@ -49,7 +66,7 @@ app.get('/books', function(req, res) {
         console.log(books);
         res.json(books);
       }
-    });
+    });  
 });
 
 app.get('/books/:id', function(req, res) {
